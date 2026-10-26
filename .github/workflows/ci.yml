@@ -1,0 +1,26 @@
+name: numerical-validation
+on: [push, pull_request]
+jobs:
+  python-rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - run: python -m pip install -e '.[test]'
+      - run: python -m pytest -q
+      - run: cargo fmt --manifest-path rust/Cargo.toml --check
+      - run: cargo clippy --manifest-path rust/Cargo.toml --locked --all-targets -- -D warnings
+      - run: cargo test --manifest-path rust/Cargo.toml --locked
+      - run: python tools/generate_demo.py data/demo
+      - run: tfm data/demo --config config/demo.json --output results/python --no-plot
+      - run: cargo run --release --locked --manifest-path rust/Cargo.toml -- data/demo --config config/demo.json --output results/rust
+      - run: python tools/compare.py results/python results/rust --report results/parity.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-parity
+          path: results/parity.json

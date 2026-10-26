@@ -1,0 +1,74 @@
+{
+  "tolerance_relative_l2_and_peak": 0.0005,
+  "python_vs_rust": {
+    "image": {
+      "max_abs_error": 1.000000082740371e-08,
+      "max_error_over_peak": 5.654573535126561e-10,
+      "relative_l2_error": 1.1041718366423234e-09
+    },
+    "envelope": {
+      "max_abs_error": 9.54999999969175e-07,
+      "max_error_over_peak": 5.400080575813334e-08,
+      "relative_l2_error": 8.427902134254358e-08
+    }
+  },
+  "metadata": {
+    "python": {
+      "shape": [
+        32,
+        32
+      ],
+      "dt": 5.000000058430487e-08,
+      "t0_index": 30.90475845336914,
+      "probe_x_mm": [
+        4.0,
+        12.0,
+        20.0,
+        28.0
+      ]
+    },
+    "rust": {
+      "shape": [
+        32,
+        32
+      ],
+      "dt": 5.000000058430487e-08,
+      "t0_index": 30.90475845336914,
+      "probe_x_mm": [
+        4.0,
+        12.0,
+        20.0,
+        28.0
+      ]
+    },
+    "matlab": {
+      "dt": 5.0000164009134096e-08,
+      "t0_index": 30.904884338378906
+    }
+  },
+  "matlab_vs_python": {
+    "image": {
+      "max_abs_error": 0.0027054549073181056,
+      "max_error_over_peak": 0.0001530012148354606,
+      "relative_l2_error": 0.0004156754678843777
+    },
+    "envelope": {
+      "max_abs_error": 0.0022297259033194905,
+      "max_error_over_peak": 0.00012609652178663847,
+      "relative_l2_error": 0.0002819816341895449
+    }
+  },
+  "matlab_vs_rust": {
+    "image": {
+      "max_abs_error": 0.0027054548073180973,
+      "max_error_over_peak": 0.00015300120918017407,
+      "relative_l2_error": 0.0004156754795835992
+    },
+    "envelope": {
+      "max_abs_error": 0.0022296859033197336,
+      "max_error_over_peak": 0.00012609425968759154,
+      "relative_l2_error": 0.00028197982790042407
+    }
+  },
+  "passed": true
+}
